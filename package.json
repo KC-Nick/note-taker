@@ -1,0 +1,24 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "author": "KC-Nick",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KC-Nick/note-taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KC-Nick/note-taker/issues"
+  },
+  "homepage": "https://github.com/KC-Nick/note-taker#readme"
+}
