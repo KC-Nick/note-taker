@@ -31,29 +31,28 @@ app.get('/notes', (req, res) =>
 //------- END view routes
 // Start controller/api routes
 app.get('/api/notes', (req, res) => {
-    res.json(dataBase);
+  res.json(dataBase);
 });
 
-app.post('/api/notes',(req, res) =>{
-    // Model for making a new note with unique id 
-    newNote = {
-        title: req.body.title,
-        text: req.body.text,
-        id: Math.floor(Math.random()*9999)
-    }
+app.post('/api/notes', (req, res) => {
+  // Model for making a new note with unique id 
+  newNote = {
+    title: req.body.title,
+    text: req.body.text,
+    id: Math.floor(Math.random() * 9999)
+  }
 
-    dataBase.push(newNote)
-    fs.writeFileSync('./db/db.json', JSON.stringify(dataBase))
-    res.json(dataBase)
+  dataBase.push(newNote)
+  fs.writeFileSync('./db/db.json', JSON.stringify(dataBase))
+  res.json(dataBase)
 })
 
-app.delete("/api/notes/:id", function(req, res) {
-    console.log("req params", req.params.id)
-    const itemIndex = dataBase.findIndex(({ id }) => id === req.params.id);
-    if (itemIndex >= 0) {
-      dataBase.splice(itemIndex, 1);
-    }
-  });
+app.delete('/api/notes/:id', (req, res) => {
+  let index = dataBase.findIndex(item => item.id === req.query.id);
+  dataBase.splice(index, 1);
+  fs.writeFileSync('./db/db.json', JSON.stringify(dataBase))
+  res.json(dataBase)
+});
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
