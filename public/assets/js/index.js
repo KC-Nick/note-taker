@@ -42,6 +42,8 @@ const saveNote = (note) =>
     headers: {
       'Content-Type': 'application/json'
     },
+    //request body
+    // req.body.title and req.body.text
     body: JSON.stringify(note)
   });
 
