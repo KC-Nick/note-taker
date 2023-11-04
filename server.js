@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-//const api = require('./routes/index.js');
+// const api = require('./public/assets/js/index');
 let dataBase = require('./db/db.json');
 const PORT = process.env.PORT || 3001;
 const fs = require('fs')
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-//app.use('/api', api);
+// app.use('/api', api);
 
 // http://localhost:3001/notes
 
@@ -28,14 +28,14 @@ app.get('/notes', (req, res) =>
 );
 
 
-//------- end view routes
-// start controller/api routes
+//------- END view routes
+// Start controller/api routes
 app.get('/api/notes', (req, res) => {
     res.json(dataBase);
 });
 
 app.post('/api/notes',(req, res) =>{
-    // model 
+    // Model for making a new note with unique id 
     newNote = {
         title: req.body.title,
         text: req.body.text,
@@ -47,10 +47,13 @@ app.post('/api/notes',(req, res) =>{
     res.json(dataBase)
 })
 
-// app.delete("/api/notes/:id", function(req, res) {
-//     console.log("req params", req.params.id)
-//     dataBase = dataBase.filter(({ id }) => id !== req.params.id);
-//   });
+app.delete("/api/notes/:id", function(req, res) {
+    console.log("req params", req.params.id)
+    const itemIndex = dataBase.findIndex(({ id }) => id === req.params.id);
+    if (itemIndex >= 0) {
+      dataBase.splice(itemIndex, 1);
+    }
+  });
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
