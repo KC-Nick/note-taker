@@ -4,7 +4,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-
+//if connected with require in server it says window not defined
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
@@ -42,8 +42,7 @@ const saveNote = (note) =>
     headers: {
       'Content-Type': 'application/json'
     },
-    //request body
-    // req.body.title and req.body.text
+    //requests body & text from here in server app.post
     body: JSON.stringify(note)
   });
 
@@ -77,7 +76,7 @@ const renderActiveNote = () => {
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
-    text: noteText.value
+    text: noteText.value,
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();

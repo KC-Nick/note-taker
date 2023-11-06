@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-// const api = require('./public/assets/js/index');
+// const api = require('./public/assets/js/index.js');
 let dataBase = require('./db/db.json');
 const PORT = process.env.PORT || 3001;
 const fs = require('fs')
@@ -16,8 +16,8 @@ app.use(express.static('public'));
 
 // http://localhost:3001/notes
 
-// VIEW ROUTES ----- GET Route for homepage
-// forward slash / means no extra endpoint
+// Page/view Routes, HTML endpoints
+// homepage input '/'
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
@@ -28,7 +28,7 @@ app.get('/notes', (req, res) =>
 );
 
 
-//------- END view routes
+//END page/view routes
 // Start controller/api routes
 app.get('/api/notes', (req, res) => {
   res.json(dataBase);
@@ -42,16 +42,42 @@ app.post('/api/notes', (req, res) => {
     id: Math.floor(Math.random() * 9999)
   }
 
+    //syncs newNote with db.json file
   dataBase.push(newNote)
   fs.writeFileSync('./db/db.json', JSON.stringify(dataBase))
   res.json(dataBase)
 })
 
-app.delete('/api/notes/:id', (req, res) => {
-  let index = dataBase.findIndex(item => item.id === req.query.id);
-  dataBase.splice(index, 1);
-  fs.writeFileSync('./db/db.json', JSON.stringify(dataBase))
-  res.json(dataBase)
+app.delete('/api/notes/:id', async (req, res) => {
+  //Grabs the id from requested parameter in dataBase
+  const db = dataBase;
+  const noteId = req.params.id;
+  console.log("55", noteId);
+  for (let i = 0; i < db.length; i++) {
+    const id = parseInt(noteId);
+    console.log("58", db[i].id);
+    if (db[i].id === id) {
+      console.log("60", db[i].id);
+      db.splice(i, 1);
+      fs.writeFileSync(path.join(__dirname,'./db/db.json'), JSON.stringify(db));
+      res.json(db);
+    }
+  // Find the index of the item with the given ID
+  // const noteIndex = dataBase.findIndex(dataBase => { 
+  //   const id = parseInt(noteId)
+  //   console.log("dataBase.id", typeof (dataBase.id));
+  //   console.log("noteId", typeof (id));
+  //   dataBase.id === id});
+  // // BUG: noteId is calling back fine, this is consoling -1 for invalid index
+  // // If the item is found, remove it from the array
+  // if (noteIndex !== -1) {
+  //   dataBase.splice(noteIndex, 1);
+  //   fs.writeFileSync(path.join(__dirname,'./db/db.json'), JSON.stringify(dataBase))
+  //   res.json(dataBase)
+  // } else {
+  //   console.log('Error 404: Note not found');
+    //BUG: This error is calling, index is the issue
+  }
 });
 
 app.listen(PORT, () =>

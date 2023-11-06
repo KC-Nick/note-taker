@@ -10,9 +10,9 @@
   "author": "KC-Nick",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "heroku": "^8.7.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KC-Nick/note-taker.git"
