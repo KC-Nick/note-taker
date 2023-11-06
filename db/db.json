@@ -1,1 +1,12 @@
-[{"title":"Potato","text":"potahto","id":1234},{"title":"testgin","text":"test","id":8574}]
+[
+    {
+        "title": "Potato",
+        "text": "potahto",
+        "id": 1234
+    },
+    {
+        "title": "testgin",
+        "text": "test",
+        "id": 8574
+    }
+]

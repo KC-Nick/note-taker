@@ -2,7 +2,7 @@
 
 ## Description and Source Code
 
-Using source code found here, [LINK](https://github.com/coding-boot-camp/miniature-eureka), this application allows one to create a note, save it, and then look back on your notes and delete them when done.
+This application allows one to create a note, save it, and then look back on your notes and delete them when done. The notes can be saved using a new note button, and will appear on the left hand side of the screen when saved. If clicked on, the full note will show on the right menu.
 
   ## Table of Contents
   - [Installation](#installation)
@@ -13,11 +13,11 @@ Using source code found here, [LINK](https://github.com/coding-boot-camp/miniatu
 
   ## Installation
 
-  TBA.
+  If you would like to install this code use `git clone` to clone the repository, `git status` to check if your version is up to date, or `git pull` to update any cloned code with current pushes.
 
   ## Credits
 
-  TBA.
+  Using source code found here, [LINK](https://github.com/coding-boot-camp/miniature-eureka).
 
   ## Contribute
 
@@ -25,8 +25,4 @@ Using source code found here, [LINK](https://github.com/coding-boot-camp/miniatu
 
   ## Test
   
- TBA.
-
-  ## License
-
-  TBA.
+ To test this app, follow this [LINK](https://secure-journey-75714-c0128ad5dfd0.herokuapp.com/notes) to open the page.
