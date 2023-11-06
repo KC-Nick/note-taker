@@ -13,7 +13,7 @@ This application allows one to create a note, save it, and then look back on you
 
   ## Installation
 
-  If you would like to install this code use `git clone` to clone the repository, `git status` to check if your version is up to date, or `git pull` to update any cloned code with current pushes.
+  If you would like to install this code use `git clone` to clone the repository, `git status` to check if your version is up to date, or `git pull` to update any cloned code with current pushes. Site will appear as such; ![A preview of the note taker website](./public/assets/scrnshot.png)
 
   ## Credits
 
